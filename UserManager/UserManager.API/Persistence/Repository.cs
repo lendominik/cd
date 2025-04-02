@@ -5,11 +5,11 @@ namespace UserManager.API.Persistence;
 
 public class Repository<T>(UserManagerDbContext dbContext) : IRepository<T> where T : BaseEntity
 {
-    public async Task<IEnumerable<T>> GetAll()
+    public async Task<IEnumerable<T>> GetAll(int pageNumber, int pageSize)
     {
         return await dbContext.Set<T>().ToListAsync();
     }
-    public async Task<T?> GetByIdAsync(int id)
+    public async Task<T?> GetByIdAsync(Guid id)
     {
         return await dbContext.Set<T>().FindAsync(id);
     }
@@ -26,7 +26,7 @@ public class Repository<T>(UserManagerDbContext dbContext) : IRepository<T> wher
     {
         dbContext.Set<T>().Remove(entity);
     }
-    public bool Exists(int id)
+    public bool Exists(Guid id)
     {
         return dbContext.Set<T>().Any(x => x.Id == id);
     }

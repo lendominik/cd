@@ -16,36 +16,36 @@ public class UsersController(IUserService userService) : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public async Task<IActionResult> GetById(int userId)
+    public async Task<IActionResult> GetById(Guid userId)
     {
         var user = await userService.Get(userId);
         return user == null ? NotFound() : Ok(user);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateUserDto user)
+    public IActionResult Create([FromBody] CreateUserDto user)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var createdUserId = await userService.Add(user);
+        var createdUserId = userService.Add(user);
         return CreatedAtAction(nameof(GetById), new { userId = createdUserId });
     }
 
     [HttpPut("{userId}")]
-    public async Task<IActionResult> Update(int userId, [FromBody] UpdateUserDto user)
+    public IActionResult Update(Guid userId, [FromBody] UpdateUserDto user)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var result = await userService.Update(userId, user);
+        var result = userService.Update(userId, user);
         return result ? NoContent() : NotFound();
     }
 
     [HttpDelete("{userId}")]
-    public async Task<IActionResult> Delete(int userId)
+    public IActionResult Delete(Guid userId)
     {
-        var result = await userService.Delete(userId);
+        var result = userService.Delete(userId);
         return result ? NoContent() : NotFound();
     }
 }
