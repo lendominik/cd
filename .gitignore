@@ -1,0 +1,55 @@
+# Dotnet build artifacts
+bin/
+obj/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.cache
+*.swp
+*.sln.ide
+
+# IDE settings
+.idea/
+*.iml
+*.csproj.user
+
+# Rider & Resharper
+*.sln.DotSettings
+.idea/
+*.dotCover
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+
+# Entity Framework Migrations
+migrations/
+
+# ASP.NET specific
+appsettings.*.json
+secrets.json
+
+# Publish artifacts
+publish/
+wwwroot/
+node_modules/
+
+# Docker
+**/docker-compose.override.yml
+**/docker-compose.*.override.yml
+**/*.dockerignore
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
