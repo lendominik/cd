@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using UserManager.API.Persistence;
+
 namespace UserManager.API;
 
 public class Program
@@ -9,6 +12,9 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+
+        builder.Services.AddDbContext<UserManagerDbContext>(options =>
+            options.UseSqlServer(""));
 
         var app = builder.Build();
 
