@@ -1,32 +1,37 @@
-﻿using UserManager.API.Entities;
+﻿using UserManager.API.Dtos.User;
 using UserManager.API.Interfaces;
 
 namespace UserManager.API.Services;
 
 public class UserService : IUserService
 {
-    public IEnumerable<User> GetAll()
+    public async Task<IEnumerable<GetUserDto>> GetAll(int page, int pageSize)
     {
+        await Task.CompletedTask;
         return [];
     }
 
-    public User? Get()
+    public async Task<GetUserDto?> Get(int id)
     {
+        await Task.CompletedTask;
         return null;
     }
 
-    public void Add()
+    public async Task<int> Add(CreateUserDto user)
     {
-
+        await Task.CompletedTask;
+        return 0;
     }
 
-    public void Update()
+    public async Task<bool> Update(int id, UpdateUserDto user)
     {
-
+        await Task.CompletedTask;
+        return true;
     }
 
-    public void Delete()
+    public async Task<bool> Delete(int id)
     {
-
+        await Task.CompletedTask;
+        return true;
     }
 }
